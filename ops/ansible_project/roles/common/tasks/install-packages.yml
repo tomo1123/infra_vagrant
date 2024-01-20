@@ -1,0 +1,20 @@
+---
+
+
+- name: Add universe repo
+  apt_repository:
+    repo: deb http://archive.ubuntu.com/ubuntu xenial universe
+    state: present
+    update_cache: yes
+
+
+- name: Install pacakges
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - python-setuptools
+    - software-properties-common
+
+
+- name: install pip3
+  apt: name=python3-pip state=present 
